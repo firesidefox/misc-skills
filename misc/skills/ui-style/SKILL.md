@@ -293,11 +293,11 @@ App (flex column, minHeight: 100vh)
 
 | 状态 | background | color | border |
 |------|-----------|-------|--------|
-| 成功/运行中 | `rgba(74,222,128,0.12)` | `c.green` | `rgba(74,222,128,0.3)` |
-| 主色/已完成 | `rgba(99,102,241,0.12)` | `c.primary` | `rgba(99,102,241,0.3)` |
-| 错误/已中止 | `rgba(248,113,113,0.12)` | `c.red` | `rgba(248,113,113,0.3)` |
-| 警告 | `rgba(251,191,36,0.1)` | `c.yellow` | `rgba(251,191,36,0.3)` |
-| 紫色标签 | `rgba(167,139,250,0.1)` | `c.purple` | `rgba(167,139,250,0.25)` |
+| 成功/运行中 | `rgba(74,222,128,0.12)` | `var(--color-green)` | `rgba(74,222,128,0.3)` |
+| 主色/已完成 | `rgba(99,102,241,0.12)` | `var(--color-primary)` | `rgba(99,102,241,0.3)` |
+| 错误/已中止 | `rgba(248,113,113,0.12)` | `var(--color-red)` | `rgba(248,113,113,0.3)` |
+| 警告 | `rgba(251,191,36,0.1)` | `var(--color-yellow)` | `rgba(251,191,36,0.3)` |
+| 紫色标签 | `rgba(167,139,250,0.1)` | `var(--color-purple)` | `rgba(167,139,250,0.25)` |
 
 徽章通用样式：`fontSize: 11, fontWeight: 600, padding: '2px 8px', borderRadius: 4, border: '1px solid'`
 
@@ -305,31 +305,36 @@ App (flex column, minHeight: 100vh)
 
 ## 数据表格
 
-```tsx
-// 列头
-const thStyle: React.CSSProperties = {
-  background: c.surface,
-  color: c.muted, fontSize: 11, fontWeight: 600,
-  textTransform: 'uppercase', letterSpacing: '0.06em',
-  padding: '8px 12px', borderBottom: `1px solid ${c.border}`,
-  textAlign: 'left',
+```css
+/* 列头 */
+.th {
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
 }
 
-// 数据行单元格
-const tdStyle: React.CSSProperties = {
-  padding: '10px 12px',
-  borderBottom: `1px solid ${c.border}`,
-  color: c.text, fontSize: 13,
+/* 数据行单元格 */
+.td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 13px;
 }
 ```
 
 | 状态 | 样式 |
 |------|------|
-| 行悬停 | `background: c.rowHover` |
-| 行选中 | `borderLeft: 3px solid c.primary`, `background: rgba(99,102,241,0.1)` |
+| 行悬停 | `background: var(--color-row-hover)` |
+| 行选中 | `border-left: 3px solid var(--color-primary)`, `background: color-mix(in srgb, var(--color-primary) 10%, transparent)` |
 | 操作列 | 右对齐，icon 按钮默认 `opacity: 0`，行 hover 时 `opacity: 1` |
-| 空状态 | 居中，`color: c.muted`, `fontSize: 14` |
-| 分页条 | `padding: 12px 16px`, `borderTop: 1px solid c.border`，flex 两端对齐 |
+| 空状态 | 居中，`color: var(--color-muted)`, `font-size: 14px` |
+| 分页条 | `padding: 12px 16px`, `border-top: 1px solid var(--color-border)`，flex 两端对齐 |
 
 ---
 
@@ -339,10 +344,10 @@ const tdStyle: React.CSSProperties = {
 
 | 变体 | background | color | border |
 |------|-----------|-------|--------|
-| primary | `c.primary` | `#fff` | none |
-| secondary | `c.surface` | `c.text` | `1px solid c.border` |
-| ghost | `transparent` | `c.muted` | none |
-| danger | `rgba(248,113,113,0.12)` | `c.red` | `1px solid rgba(248,113,113,0.3)` |
+| primary | `var(--color-primary)` | `#fff` | none |
+| secondary | `var(--color-surface)` | `var(--color-text)` | `1px solid var(--color-border)` |
+| ghost | `transparent` | `var(--color-muted)` | none |
+| danger | `rgba(248,113,113,0.12)` | `var(--color-red)` | `1px solid rgba(248,113,113,0.3)` |
 
 **尺寸**
 
@@ -356,17 +361,17 @@ const tdStyle: React.CSSProperties = {
 
 禁用态：`opacity: 0.4, cursor: not-allowed`
 
-Hover 态：primary/danger 用 `opacity: 0.85`；secondary/ghost 用 `background: c.rowHover`
+Hover 态：primary/danger 用 `opacity: 0.85`；secondary/ghost 用 `background: var(--color-row-hover)`
 
 ---
 
 ## 对比度要求（WCAG AA ≥ 4.5:1 / AAA ≥ 7:1）
 
-| 级别 | Token | 说明 |
-|------|-------|------|
-| AAA ≥ 7:1 | `text` | 主要正文必须满足 |
-| AAA ≥ 7:1 | `textSub` | 次要正文 |
-| AA ≥ 4.5:1 | `muted` | 标签、辅助说明 |
-| 推荐 | `label` | 时间戳等非关键文字 |
+| 级别 | CSS 变量 | 说明 |
+|------|---------|------|
+| AAA ≥ 7:1 | `--color-text` | 主要正文必须满足 |
+| AAA ≥ 7:1 | `--color-text-sub` | 次要正文 |
+| AA ≥ 4.5:1 | `--color-muted` | 标签、辅助说明 |
+| 推荐 | `--color-label` | 时间戳等非关键文字 |
 
-亮暗两套主题的 token 值需分别测试对比度。
+亮暗两套主题的变量值需分别测试对比度。
