@@ -207,47 +207,81 @@ App (flex column, minHeight: 100vh)
 
 ## 卡片规范
 
-```tsx
-// MetricCard（数据指标卡）
-{ border: `1px solid ${c.border}`, borderRadius: 10, padding: '14px 20px',
-  textAlign: 'center', minWidth: 96 }
-// 标签：color: c.muted, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 6
-// 数值：color: c.text, fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1
+```css
+/* MetricCard */
+.metric-card {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 14px 20px;
+  text-align: center;
+  min-width: 96px;
+}
+.metric-card__label {
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+.metric-card__value {
+  color: var(--color-text);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
 
-// ChartCard（图表容器卡）
-{ border: `1px solid ${c.border}`, borderRadius: 10, padding: '14px 16px' }
-// 标题：color: c.muted, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 8
+/* ChartCard */
+.chart-card {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.chart-card__title {
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 8px;
+}
 
-// FormBlock（表单区块）
-{ border: `1px solid ${c.border}`, borderRadius: 12, padding: '20px 24px', marginBottom: 16 }
+/* FormBlock */
+.form-block {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
 ```
 
 ---
 
 ## 表单元素
 
-```tsx
-const inp: React.CSSProperties = {
-  background: c.inputBg,
-  border: `1px solid ${c.border}`,
-  borderRadius: 8,
-  height: 44,
-  padding: '0 12px',
-  color: c.text,
-  fontSize: 14,
-  width: '100%',
-  boxSizing: 'border-box',
-  outline: 'none',
+```css
+.inp {
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  height: 44px;
+  padding: 0 12px;
+  color: var(--color-text);
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
 }
 
-const lbl: React.CSSProperties = {
-  color: c.muted,
-  fontSize: 11,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '0.08em',
-  marginBottom: 6,
-  display: 'block',
+.lbl {
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  display: block;
 }
 ```
 
