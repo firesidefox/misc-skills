@@ -145,20 +145,30 @@ App (flex column, minHeight: 100vh)
 | 参数 | 值 |
 |------|----|
 | 容器高度 | `calc(100vh - 52px)`, `overflow: hidden` |
-| 左侧宽度 | `26%`, `minWidth: 320`, `maxWidth: 400` |
-| 左侧右边框 | `1px solid c.border` |
+| 左侧宽度 | `26%`, `min-width: 320px`, `max-width: 400px` |
+| 左侧右边框 | `1px solid var(--color-border)` |
 | 列表项 padding | `12px 16px` |
-| 选中态 | `borderLeft: 3px solid c.primary`, `background: rgba(99,102,241,0.15)` |
-| 悬停态 | `background: c.rowHover` |
-| 右侧 | `flex: 1`, `overflow: hidden`, `minWidth: 0` |
+| 选中态 | `border-left: 3px solid var(--color-primary)`, `background: color-mix(in srgb, var(--color-primary) 15%, transparent)` |
+| 悬停态 | `background: var(--color-row-hover)` |
+| 右侧 | `flex: 1`, `overflow: hidden`, `min-width: 0` |
 
 空状态（右侧无选中时）：
-```tsx
-<div style={{ height: '100%', display: 'flex', flexDirection: 'column',
-  alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-  <div style={{ color: c.border, fontSize: 40 }}>←</div>
-  <div style={{ color: c.muted, fontSize: 14 }}>选择左侧记录查看详情</div>
+```html
+<div class="empty-state">
+  <span style="color: var(--color-border); font-size: 40px">←</span>
+  <p style="color: var(--color-muted); font-size: 14px">选择左侧记录查看详情</p>
 </div>
+```
+
+```css
+.empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
 ```
 
 ### Pattern B：全屏纵向（工具条 + 滚动主体）
@@ -168,10 +178,10 @@ App (flex column, minHeight: 100vh)
 | 参数 | 值 |
 |------|----|
 | 工具条 padding | `8px 16px` |
-| 工具条底边框 | `1px solid c.border` |
+| 工具条底边框 | `1px solid var(--color-border)` |
 | 主体 padding | `16px` |
 | 主体 gap | `12px` |
-| 2 列图表 | `gridTemplateColumns: 1fr 1fr`, `gap: 12px` |
+| 2 列图表 | `grid-template-columns: 1fr 1fr`, `gap: 12px` |
 
 ### Pattern C：单列表单（居中，限宽）
 
@@ -179,11 +189,11 @@ App (flex column, minHeight: 100vh)
 
 | 参数 | 值 |
 |------|----|
-| 最大宽度 | `maxWidth: 800` |
+| 最大宽度 | `max-width: 800px` |
 | 外边距 | `padding: 32px 40px` |
-| 页头 marginBottom | `24px` |
-| 页头标题 | `fontSize: 20, fontWeight: 700, color: c.text` |
-| 页头副标题 | `fontSize: 12, color: c.muted` |
+| 页头 margin-bottom | `24px` |
+| 页头标题 | `font-size: 20px, font-weight: 700, color: var(--color-text)` |
+| 页头副标题 | `font-size: 12px, color: var(--color-muted)` |
 
 常用内部网格：
 
