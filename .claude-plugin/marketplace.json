@@ -1,12 +1,14 @@
 {
   "name": "misc-skills",
   "owner": { "name": "Chen Wei" },
-  "metadata": { "description": "Miscellaneous engineering skills: logging, UI style, and more." },
+  "metadata": { "description": "Miscellaneous skills: logging, UI style, and general engineering workflows." },
   "plugins": [
     {
       "name": "misc",
-      "source": "./",
+      "source": "./misc",
       "description": "Miscellaneous skills for logging, UI style guidelines, and general engineering workflows."
     }
-  ]
+  ],
+  "version": "1.0.0",
+  "license": "MIT"
 }
