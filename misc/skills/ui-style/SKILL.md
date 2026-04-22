@@ -201,7 +201,7 @@ App (flex column, minHeight: 100vh)
 |------|---------------------|
 | 3 列数字参数 | `1fr 1fr 1fr` |
 | 2 列字段 | `1fr 1fr` |
-| 主字段 + 操作按钮 + 次字段（flex 行） | `flex: 1.5` + `flexShrink: 0` + `flex: 1` |
+| 主字段 + 操作按钮 + 次字段（flex 行） | `flex: 1.5` + `flex-shrink: 0` + `flex: 1` |
 
 ---
 
