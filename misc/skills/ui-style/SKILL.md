@@ -31,6 +31,7 @@ description: React Web 页面布局与样式规范。涵盖页面结构、视图
 | `c.panel` | 侧边栏/面板背景 |
 | `c.border` | 边框/分割线 |
 | `c.text` | 主要正文 |
+| `c.textSub` | 次要正文 |
 | `c.muted` | 辅助说明文字 |
 | `c.label` | 时间戳等非关键文字 |
 | `c.primary` | 主色（按钮/选中态） |
@@ -90,7 +91,7 @@ App (flex column, minHeight: 100vh)
 | 左侧宽度 | `26%`, `minWidth: 320`, `maxWidth: 400` |
 | 左侧右边框 | `1px solid c.border` |
 | 列表项 padding | `12px 16px` |
-| 选中态 | `borderLeft: 3px solid c.primary`, `background: rgba(primary, 0.15)` |
+| 选中态 | `borderLeft: 3px solid c.primary`, `background: rgba(99,102,241,0.15)` |
 | 悬停态 | `background: c.rowHover` |
 | 右侧 | `flex: 1`, `overflow: hidden`, `minWidth: 0` |
 
@@ -129,11 +130,11 @@ App (flex column, minHeight: 100vh)
 
 常用内部网格：
 
-| 场景 | gridTemplateColumns |
+| 场景 | 布局值 |
 |------|---------------------|
 | 3 列数字参数 | `1fr 1fr 1fr` |
 | 2 列字段 | `1fr 1fr` |
-| 主字段 + 操作按钮 + 次字段 | `flex: 1.5` + `flexShrink: 0` + `flex: 1` |
+| 主字段 + 操作按钮 + 次字段（flex 行） | `flex: 1.5` + `flexShrink: 0` + `flex: 1` |
 
 ---
 
@@ -224,7 +225,7 @@ const tdStyle: React.CSSProperties = {
 | 状态 | 样式 |
 |------|------|
 | 行悬停 | `background: c.rowHover` |
-| 行选中 | `borderLeft: 3px solid c.primary`, `background: rgba(primary, 0.1)` |
+| 行选中 | `borderLeft: 3px solid c.primary`, `background: rgba(99,102,241,0.1)` |
 | 操作列 | 右对齐，icon 按钮默认 `opacity: 0`，行 hover 时 `opacity: 1` |
 | 空状态 | 居中，`color: c.muted`, `fontSize: 14` |
 | 分页条 | `padding: 12px 16px`, `borderTop: 1px solid c.border`，flex 两端对齐 |
